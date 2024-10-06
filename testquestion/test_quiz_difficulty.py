@@ -1,5 +1,5 @@
 import pytest
-from trivia import Quiz, Question
+from question import Quiz, Question
 
 def test_quiz_starts_with_easy_questions():
     quiz = Quiz()
