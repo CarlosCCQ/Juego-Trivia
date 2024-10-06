@@ -4,5 +4,5 @@ class Question:
         self.options = options
         self.correct_answer = correct_answer
 
-def is_correct(self, answer):
-    return self.correct_answer == answer
+    def is_correct(self, answer):
+        return self.correct_answer == answer
