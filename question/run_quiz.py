@@ -1,7 +1,15 @@
 import Quiz
+from trivia import Question 
 
 def run_quiz():
+    print("Bienvenido al Juego de Trivia!")
+    print("Responde las siguientes preguntas seleccionando el número de la opción correcta")
     quiz = Quiz()
+
+    quiz.add_question(Question("What is 2 + 2?", ["1", "2", "3", "4"], "4", "fácil"))
+    quiz.add_question(Question("What is 5 * 5?", ["10", "15", "25", "30"], "25", "fácil"))
+    quiz.add_question(Question("Capital of France?", ["Berlin", "London", "Paris", "Rome"], "Paris", "media"))
+    quiz.add_question(Question("Square root of 144?", ["10", "11", "12", "13"], "12", "difícil"))
 
     while quiz.current_question_index < 10:
         question = quiz.get_next_question()
@@ -17,4 +25,10 @@ def run_quiz():
                 print("¡Incorrecto!")
         else:
             break
-    print(f"Juego terminado. Respuestas correctas: {quiz.correct_answer}, incorrectas: {quiz.incorrect_answer}")
+    print("Juego terminado.")
+    print(f"Preguntas constestadas: {quiz.current_question_index}")
+    print(f"Preguntas correctas: {quiz.correct_answer}")
+    print(f"Respuestas incorrectas: {quiz.incorrect_answer}")
+
+if __name__ == "__main__":
+    run_quiz()
