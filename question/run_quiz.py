@@ -7,7 +7,7 @@ def run_quiz():
         question = quiz.get_next_question()
 
         if question:
-            print(question.decription)
+            print(question.description)
             for idx, option in enumerate(question.options):
                 print(f"{idx + 1}) {option}")
             answer = input("Tu respuesta:")
@@ -17,4 +17,4 @@ def run_quiz():
                 print("¡Incorrecto!")
         else:
             break
-    print(f"Juego terminado. Respuesta correctas: (quiz.correct_answer), incorrectas: {quiz.incorrect_answer}")
+    print(f"Juego terminado. Respuestas correctas: {quiz.correct_answer}, incorrectas: {quiz.incorrect_answer}")
