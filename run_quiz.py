@@ -11,7 +11,7 @@ def run_quiz():
     quiz.add_question(Question("Capital of France?", ["Berlin", "London", "Paris", "Rome"], "Paris", "media"))
     quiz.add_question(Question("Square root of 144?", ["10", "11", "12", "13"], "12", "difícil"))
 
-    while quiz.current_question_index < 10:
+    while True:
         question = quiz.get_next_question()
 
         if question:
@@ -23,6 +23,7 @@ def run_quiz():
                 print("¡Correcto!")
             else:
                 print("¡Incorrecto!")
+            quiz.adjust_difficulty()
         else:
             break
     print("Juego terminado.")
