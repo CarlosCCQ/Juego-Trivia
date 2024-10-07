@@ -14,11 +14,10 @@ def test_quiz_adjusts_to_medium():
     quiz = Quiz()
     easy_question = Question("What 2 + 2?", ["1","2","3","4"],"4","fácil")
     medium_question = Question("Capital de France?",["Berlin","London","Paris","Roma"],"Paris","media")
-    quiz.add_question(easy_question)
-    quiz.add_question(easy_question)
-    quiz.add_question(easy_question)
+    
+    for _ in range(3):
+        quiz.add_question(easy_question)
 
-    quiz.answer_question(quiz.get_next_question(),"4")
     quiz.answer_question(quiz.get_next_question(),"4")
     quiz.answer_question(quiz.get_next_question(),"4")
 
@@ -39,8 +38,6 @@ def test_quiz_adjusts_to_hard():
     quiz.answer_question(quiz.get_next_question(),"4")
     quiz.answer_question(quiz.get_next_question(),"4")
     quiz.answer_question(quiz.get_next_question(),"4")
-    quiz.answer_question(quiz.get_next_question(),"Paris")
-    quiz.answer_question(quiz.get_next_question(),"Paris")
     quiz.answer_question(quiz.get_next_question(),"Paris")
 
     quiz.add_question(hard_question)

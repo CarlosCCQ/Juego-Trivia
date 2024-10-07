@@ -30,7 +30,9 @@ class Quiz:
             return False
         
     def adjust_difficulty(self):
-        if self.correct_answer >= 2:
-            self.current_difficulty = "media"
         if self.correct_answer >= 4:
             self.current_difficulty = "difícil"
+        elif self.correct_answer >= 2:
+            self.current_difficulty = "media"
+        elif self.incorrect_answer >= 2:
+            self.current_difficulty = "fácil"

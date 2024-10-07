@@ -11,6 +11,17 @@ def run_quiz():
     quiz.add_question(Question("Capital of France?", ["Berlin", "London", "Paris", "Rome"], "Paris", "media"))
     quiz.add_question(Question("Square root of 144?", ["10", "11", "12", "13"], "12", "difícil"))
 
+    def get_user_answer(question):
+        while True:
+            try:
+                answer = int(input("tu respuesta: ")) - 1
+                if 0 <= answer < len(question.options):
+                    return question.options[answer]
+                else:
+                    print("Por favor, selecciona una opción válida.")
+            except ValueError:
+                print("Por favor, ingresa un numero valido.")
+
     while True:
         question = quiz.get_next_question()
 
@@ -18,7 +29,7 @@ def run_quiz():
             print(question.description)
             for idx, option in enumerate(question.options):
                 print(f"{idx + 1}) {option}")
-            answer = input("Tu respuesta:")
+            answer = get_user_answer(question)
             if quiz.answer_question(question, answer):
                 print("¡Correcto!")
             else:
