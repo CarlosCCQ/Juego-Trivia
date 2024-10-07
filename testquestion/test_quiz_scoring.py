@@ -1,5 +1,6 @@
 import pytest
-from question import Quiz, Question
+from questionTrivia.quiz import Quiz
+from questionTrivia.question import Question
 
 def test_quiz_scoring():
     quiz = Quiz()

@@ -1,4 +1,5 @@
-from question import Question, Quiz
+from questionTrivia.question import Question
+from questionTrivia.quiz import Quiz
 
 def run_quiz():
     print("Bienvenido al Juego de Trivia!")
