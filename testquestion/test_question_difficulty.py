@@ -17,7 +17,7 @@ def test_question_difficulty_level():
     easy_question = Question("What is 2 + 2?",["1","2","3","4"],"4","fácil")
     medium_question = Question("Capital of France?",["Berlin","London","Paris","Roma"],"Paris","media")
     hard_question = Question("Square root of 144?",["10","11","12","13"],"12","difícil")
-    
+
     assert easy_question.difficulty == "fácil"
     assert medium_question.difficulty == "media"
     assert hard_question.difficulty == "difícil"

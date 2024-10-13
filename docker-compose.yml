@@ -8,9 +8,13 @@ services:
       POSTGRES_DB: trivia_db
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - trivia_net
   web:
     build: .
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    command: uvicorn run_quiz:app --host 0.0.0.0 --port 8000 --reload
     ports:
       - "8000:8000"
     volumes:
@@ -19,3 +23,11 @@ services:
       DATABASE_URL: postgres://user:password@db:5432/trivia_db
     depends_on:
       - db
+    networks:
+      - trivia_net
+
+volumes:
+  postgres_data:
+
+networks:
+  trivia_net:

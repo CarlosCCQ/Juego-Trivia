@@ -1,26 +1,50 @@
+from questionTrivia.question import Question
+
 class Quiz:
     def __init__(self):
-        self.questions = {
-            "fácil": [],
-            "media": [],
-            "difícil": []
-        }
-        self.current_question_index = 0
+        self.questions = []
+        self.current_difficulty = "fácil"
+        self.total_answered_questions = 0
+        self.max_questions = 10
         self.correct_answer = 0
         self.incorrect_answer = 0
-        self.current_difficulty = "fácil"
-    
+        
+        self.answered_questions = {
+            "fácil": 0,
+            "media": 0,
+            "difícil": 0,
+            "muy difícil": 0
+        }
+
+
     def add_question(self, question):
-        self.questions[question.difficulty].append(question)
-    
+        self.questions.append(question)
+
     def get_next_question(self):
-        difficulty_questions = self.questions[self.current_difficulty]
-        if self.current_question_index < len(difficulty_questions):
-            question = difficulty_questions[self.current_question_index]
-            self.current_question_index += 1
-            return question
-        return None
-    
+        if self.total_answered_questions >= self.max_questions:
+            return None
+
+        filtered_questions = [q for q in self.questions if q.difficulty == self.current_difficulty]
+
+        if self.answered_questions[self.current_difficulty] >= len(filtered_questions):
+            if self.current_difficulty == "fácil":
+                self.current_difficulty = "media"
+            elif self.current_difficulty == "media":
+                self.current_difficulty = "difícil"
+            elif self.current_difficulty == "difícil":
+                self.current_difficulty = "muy difícil"
+            else:
+                return None
+            
+            return self.get_next_question()
+
+        question = filtered_questions[self.answered_questions[self.current_difficulty]]
+        self.answered_questions[self.current_difficulty] += 1
+        self.total_answered_questions += 1
+
+        return question
+
+
     def answer_question(self, question, answer):
         if question.is_correct(answer):
             self.correct_answer += 1
@@ -28,11 +52,3 @@ class Quiz:
         else:
             self.incorrect_answer += 1
             return False
-        
-    def adjust_difficulty(self):
-        if self.correct_answer >= 4:
-            self.current_difficulty = "difícil"
-        elif self.correct_answer >= 2:
-            self.current_difficulty = "media"
-        elif self.incorrect_answer >= 2:
-            self.current_difficulty = "fácil"
