@@ -1,0 +1,41 @@
+name: Python CI
+
+on:
+    push:
+        branches:
+            - develop
+            - main
+    
+    pull_request:
+        branches:
+            - develop
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Set up Python
+              uses: actions/setup-python@v2
+              with:
+                python-version: '3.9'
+
+            - name: Instalación dependencias
+              run: pip install -r requirements.txt
+              working-directory: Juego-Trivia
+
+            - name: Check Docker and Docker Compose Versions
+              run: |
+                docker compose up --build -d
+              working-directory: Juego-Trivia
+
+            - name: Run test
+              run: docker exec Juego-Trivia-container tytest
+              working-directory: Juego-Trivia
+
+            - name: Stop and clean Docker Compose
+              run: |
+                docker compose down
+              working-directory: Juego-Trivia  

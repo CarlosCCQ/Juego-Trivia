@@ -1,4 +1,4 @@
 pytest
-fastapi
-uvicorn
 psycopg2-binary
+uvicorn
+fastapi

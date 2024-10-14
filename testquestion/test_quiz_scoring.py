@@ -1,10 +1,7 @@
 import pytest
 
-from questionTrivia.question import Question
-from questionTrivia.quiz import Quiz 
-
-"""from questionTrivia.quiz import Quiz
-from questionTrivia.question import Question"""
+from questiontrivia.question import Question
+from questiontrivia.quiz import Quiz 
 
 @pytest.fixture
 def setup_quiz():
@@ -30,22 +27,10 @@ def test_score_after_multiple_questions(setup_quiz):
             quiz.answer_question(question, "4")
         elif question.description == "What is 5 * 5?":
             quiz.answer_question(question, "25")
+        elif question.description == "Capital of France?":
+            quiz.answer_question(question, "Paris")
         else:
-            quiz.answer_question(question, "Berlin")
+            quiz.answer_question(question, "11") # Esto es para la ultima pregunta que insertamos en quiz.add_question
     
     assert quiz.correct_answer == 3
     assert quiz.incorrect_answer == 1
-
-"""def test_quiz_scoring():
-    quiz = Quiz()
-    question = Question("What is 2 + 2?",["1","2","3","4"],"4")
-    quiz.add_question(question)
-    assert quiz.answer_question(question,"4") == True
-    assert quiz.correct_answer == 1
-
-def test_quiz_scoring_incorrect_answer():
-    quiz = Quiz()
-    question = Question("What is 2 + 2?",["1","2","3","4"],"4","fácil")
-    quiz.add_question(question)
-    assert not quiz.answer_question(question,"2")
-    assert quiz.incorrect_answer == 1"""

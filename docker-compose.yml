@@ -7,14 +7,14 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: trivia_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - trivia_net
   web:
     build: .
-    command: uvicorn run_quiz:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     ports:
       - "8000:8000"
     volumes:
