@@ -32,7 +32,7 @@ jobs:
               working-directory: .
 
             - name: Run test
-              run: docker-compose exec web tytest
+              run: docker compose exec web tytest
               working-directory: .
 
             - name: Stop and clean Docker Compose
