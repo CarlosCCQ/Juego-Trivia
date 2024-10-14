@@ -24,18 +24,18 @@ jobs:
 
             - name: Instalación dependencias
               run: pip install -r requirements.txt
-              working-directory: Juego-Trivia
+              working-directory: .
 
             - name: Build and start services
               run: |
                 docker compose up --build -d
-              working-directory: Juego-Trivia
+              working-directory: .
 
             - name: Run test
               run: docker-compose exec web tytest
-              working-directory: Juego-Trivia
+              working-directory: .
 
             - name: Stop and clean Docker Compose
               run: |
                 docker compose down
-              working-directory: Juego-Trivia
+              working-directory: .
