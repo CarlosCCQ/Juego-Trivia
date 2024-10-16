@@ -27,10 +27,8 @@ def test_score_after_multiple_questions(setup_quiz):
             quiz.answer_question(question, "4")
         elif question.description == "What is 5 * 5?":
             quiz.answer_question(question, "25")
-        elif question.description == "Capital of France?":
-            quiz.answer_question(question, "Paris")
         else:
-            quiz.answer_question(question, "11") # Esto es para la ultima pregunta que insertamos en quiz.add_question
+            quiz.answer_question(question, "Berlin")
     
     assert quiz.correct_answer == 3
     assert quiz.incorrect_answer == 1

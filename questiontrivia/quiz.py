@@ -1,5 +1,3 @@
-from questiontrivia.question import Question
-
 class Quiz:
     def __init__(self):
         self.questions = []
