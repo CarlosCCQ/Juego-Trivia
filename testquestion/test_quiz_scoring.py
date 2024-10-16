@@ -28,7 +28,7 @@ def test_score_after_multiple_questions(setup_quiz):
         elif question.description == "What is 5 * 5?":
             quiz.answer_question(question, "25")
         elif question.description == "Capital of France?":
-            quiz.answeer_question(question, "Paris")
+            quiz.answer_question(question, "Paris")
         else:
             quiz.answer_question(question, "11")
     
